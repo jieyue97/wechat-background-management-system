@@ -1,0 +1,57 @@
+{
+    "code": 200,
+    "data": [
+        {
+            "title": "菜单一",
+            "value": "/home",
+            "icon": "el-icon-setting",
+            "children": [
+                {
+                    "icon": "el-icon-setting",
+                    "title": "菜单一",
+                    "value": "/home/home11",
+                    "children": [
+                        {
+                            "title": "菜单一",
+                            "icon": "el-icon-setting",
+                            "value": "/home/home11/user",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "菜单二",
+            "icon": "el-icon-setting",
+            "value": "/home2",
+            "children": [
+                {
+                    "title": "菜单一",
+                    "icon": "el-icon-setting",
+                    "value": "/home12",
+                    "children": []
+                }
+            ]
+        },
+        {
+            "title": "菜单三",
+            "icon": "el-icon-setting",
+            "value": "/home3",
+            "children": [
+                {
+                    "title": "菜单一",
+                    "icon": "el-icon-setting",
+                    "value": "/home14",
+                    "children": []
+                }
+            ]
+        },
+        {
+            "title": "菜单四",
+            "icon": "el-icon-setting",
+            "value": "/home4",
+            "children": []
+        }
+    ]
+}

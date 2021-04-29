@@ -1,0 +1,28 @@
+// 标题字体渐变
+.text-linear-gradient{
+    background-image: -webkit-linear-gradient(left, #41fcff, #2ad5fe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+// 系统标题
+.system-name{
+    font-size: 24px;
+    font-weight: 600;
+}
+// 占满盒子
+.full-box{
+    height: 100%;
+    width: 100%;
+}
+// 内容居中
+.content-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+// 内容靠边
+.content-between{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

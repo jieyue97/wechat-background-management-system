@@ -1,0 +1,55 @@
+// 通用样式
+@import "./common.scss";
+// 系统字体
+@import "./font.scss";
+// 系统普通字体大小
+$systemFontSize: 14px;
+// 系统普通字体颜色
+$systemFontColor: #C0D2E6;
+// 系统普通字体颜色次要
+$systemFontColor1: #606266;
+// 系统活跃字体颜色(聚焦活跃边框)
+$systemActiveFontColor: rgba(0,249,255, 0.8);
+
+
+// 边框、背景颜色
+// 系统普通边框颜色
+$systemBorderColor: rgba(240, 247, 255, 0.1);
+// 系统移入边框颜色
+$systemHoverBorderColor: rgba(240, 247, 255, 0.2);
+// 系统活跃背景、边框颜色
+$systemActiveBackgroundColor: rgba(0,249,255,0.2);
+// 系统活跃背景颜色
+$systemActiveBackgroundColor8: rgba(0,249,255,0.8);
+// 系统背景
+$systemBoxBackgroundColor:#012522;
+// 系统盒子边框内阴影
+$systemBorderShadow:0px 0px 5px $systemActiveBackgroundColor inset;
+// 系统输入框背景颜色
+$systemInputBackgroundColor: rgba(0,249,255,0.1);
+// 系统禁用背景颜色
+$systemDisableBackgroundColor: rgba(0,249,255,0.15);
+
+// 系统布局宽高
+// 面包屑
+$breadcrumbHeight: 42px;
+// 顶部
+$topHeight: 54px;
+
+
+/*可以在这里添加你自己的css*/
+::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-corner{
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: $systemActiveBackgroundColor;
+  }

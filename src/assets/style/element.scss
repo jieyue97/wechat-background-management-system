@@ -1,0 +1,271 @@
+
+.el-form{
+    .el-form-item__label{
+        color: $systemFontColor;
+        font-size: $systemFontSize;
+    }
+}
+.el-table,.el-table__fixed-right{
+    width: 100%;
+    color: $systemFontColor;
+    background: none!important;
+    .el-table__header-wrapper{
+        tr,th{
+            color: $systemActiveFontColor;
+            font-size: $systemFontSize;
+            background-color:  rgba(0, 249, 255, 0.1);
+        }
+        th.is-leaf{
+            border-bottom: none;
+        }
+    }
+    .el-table__fixed-right-patch{
+        background-color: transparent;
+        border-bottom: none;
+    }
+    tbody{
+        tr{
+            &:nth-child(odd){
+                background-color: #012630;
+            }
+            &:nth-child(even){
+                background-color: transparent;
+            }
+        }
+        .hover-row{
+            background-color: transparent;
+        }
+        .el-table__row--striped {
+            background-color: transparent;
+        }
+        td{
+            background-color: transparent!important;
+            border-bottom: none;
+        }
+    }
+    .el-table__fixed-header-wrapper{
+        tr,th{
+            color: $systemActiveFontColor;
+            font-size: $systemFontSize;
+            background-color:  $systemBoxBackgroundColor;
+        }
+        th.is-leaf{
+            border-bottom: none;
+        }
+        
+    }
+    .el-table__fixed-body-wrapper{
+        tr{
+            &:nth-child(even){
+                background-color: #000!important;
+            }
+        }
+    }
+    .el-table__fixed-right{
+        border-left: 1px solid $systemActiveBackgroundColor;
+    }
+    &::before{
+        background: none;
+    } 
+}
+.el-input,.el-date-editor,.el-input.is-focus{
+    &.is-disabled .el-input__inner{
+        background-color: $systemDisableBackgroundColor; 
+        border: 1px solid $systemBorderColor;
+        caret-color: $systemActiveFontColor;
+    }
+    .el-range-input{
+        border: none;
+        color: $systemFontColor;
+        background-color: transparent;
+        caret-color: $systemActiveFontColor;
+    }
+    .el-range-separator{
+        color: $systemFontColor1;
+    }
+    &>.el-input__inner,&.el-input__inner{
+        background-color: $systemInputBackgroundColor;
+        border: 1px solid $systemBorderColor;
+        color: $systemFontColor;
+        caret-color: $systemActiveFontColor;
+        &:hover{
+            border: 1px solid $systemHoverBorderColor;
+            border-color: $systemHoverBorderColor;
+        }
+        &:focus{
+            border: 1px solid $systemActiveFontColor;
+        }
+    }
+}
+
+.el-button{
+    &--primary,&--primary:focus{
+        background: rgba(0, 249, 255, 0.2);
+        border: 1px solid rgba(0, 249, 255, 0.6);
+        color: $systemActiveFontColor;
+        &:hover,&:active{
+            border: 1px solid rgba(0, 249, 255, 0.8);
+            background: rgba(0, 249, 255, 0.2);
+            color: $systemActiveFontColor;
+            transition: all 0.2s;
+        }
+    }
+        &--default,&.is-plain,&--default:focus{
+            background: rgba(0, 249, 255, 0.2);
+            border: 1px solid $systemBorderColor;
+            color: $systemFontColor;
+            &:hover,&:active{
+                border: 1px solid $systemHoverBorderColor;
+                background: rgba(0, 249, 255, 0.2);
+                color: #fff;
+                transition: all 0.2s;
+            }
+        }
+    &--text,&--text:focus{
+        color: $systemActiveFontColor;
+        &:hover,&:active{
+            color: $systemActiveFontColor;
+        }
+    }
+    &.is-disabled.is-plain,&.is-disabled{
+        background-color: $systemDisableBackgroundColor;
+        color: $systemFontColor1;
+        border: 1px solid $systemBorderColor;
+        &:hover,&:active{
+            color: $systemFontColor1;
+        border: 1px solid $systemBorderColor;
+            background-color: $systemDisableBackgroundColor;
+        }
+    }
+}
+// 分页
+.el-pagination{
+    color: $systemFontColor;
+    font-size: $systemFontSize;
+    &__total{
+        color: $systemFontColor;
+    }
+    &__sizes{
+        color: $systemFontColor;
+        .el-input .el-input__inner:hover{
+            border-color: $systemHoverBorderColor;
+        }
+    }
+    &__jump{
+        color: $systemFontColor;
+    }
+    &.is-background .btn-prev,&.is-background .btn-next{
+        background-color: #2A3C4E;
+        &:hover{
+            color: $systemActiveFontColor;
+        }
+    }
+    &.is-background .el-pager{
+        li{
+            color: $systemFontColor;
+        }
+        li:not(.disabled).active{
+            background-color: $systemActiveBackgroundColor8;
+        }
+    }
+}
+.el-select-dropdown{
+    background-color: $systemBoxBackgroundColor;
+    border: 1px solid $systemActiveBackgroundColor;
+    box-shadow:  $systemBorderShadow;
+    &__item{
+        color: $systemFontColor;
+        &:hover{
+            color: $systemActiveFontColor;
+            background: $systemActiveBackgroundColor;
+            border:none
+        }
+    }
+    &__item.selected{
+        color: $systemActiveFontColor;
+    }
+    &__item.hover{
+        background: $systemActiveBackgroundColor;
+    }
+}
+.el-dropdown-menu{
+    background-color: $systemBoxBackgroundColor;
+    border: 1px solid $systemActiveBackgroundColor;
+    box-shadow:  $systemBorderShadow;
+.el-dropdown-menu__item{
+    color: $systemFontColor;
+    &:hover{
+        color: $systemActiveFontColor;
+        background: $systemActiveBackgroundColor;
+        border:none
+    }
+}
+
+}
+.el-picker-panel{
+    color: $systemFontColor;
+    background-color: $systemBoxBackgroundColor;
+    border-color: $systemActiveBackgroundColor;
+    &__footer{
+        border-color: $systemActiveBackgroundColor;
+        background-color: $systemBoxBackgroundColor;
+    }
+    &__content.is-left,&__content.is-right,.el-date-table th,.el-date-range-picker__time-header{
+        border-color: $systemActiveBackgroundColor;
+    }
+    .el-date-table td.available:hover,.el-date-table td.today span{
+        color: $systemActiveFontColor;
+    }
+    .el-date-table td.next-month, .el-date-table td.prev-month{
+        color:$systemFontColor1
+    }
+    td.in-range div{
+        background-color: $systemInputBackgroundColor;
+        &:hover{
+            background-color: $systemInputBackgroundColor;
+        }
+    }
+    td.start-date span,td.end-date span{
+        background-color: $systemDisableBackgroundColor; 
+    }
+}
+.el-time-panel{
+    
+    background-color: $systemBoxBackgroundColor;
+    border-color: $systemActiveBackgroundColor;
+    .el-time-spinner__item{
+        color: $systemFontColor;
+        &:hover{
+            color: $systemActiveFontColor;
+        }
+    }
+    &__footer{
+        border-color: $systemActiveBackgroundColor;
+    }
+    &__content{
+        &::before{
+            border-color: $systemActiveBackgroundColor;
+        }
+        &::after{
+            border: none;
+        }
+    }
+    &__btn.confirm{
+        color: $systemActiveFontColor;
+    }
+    &__btn.cancel{
+        color: $systemFontColor;
+    }
+    .el-time-spinner__item.active:not(.disabled){
+        color: $systemActiveFontColor;
+    }
+    .el-time-spinner__item:hover:not(.disabled):not(.active){
+        background-color: $systemInputBackgroundColor;
+    }
+}
+.el-popper[x-placement^=bottom] .popper__arrow{
+    &::after{
+        border-color: $systemActiveBackgroundColor;
+    }
+    
+}
