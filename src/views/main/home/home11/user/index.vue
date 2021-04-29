@@ -733,7 +733,7 @@ export default {
   display: flex;
 }
 .action-log-foot {
-  padding: 15px;
+  padding: $size10;
   text-align: end;
 }
 </style>

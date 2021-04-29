@@ -41,7 +41,7 @@ export default {
 
 <style lang='scss' scoped>
 .layout-header {
-  padding: 0 20px;
+  padding: 0 $size20;
   height: $topHeight;
   display: flex;
   background-image: linear-gradient(
@@ -53,12 +53,12 @@ export default {
   justify-content: space-between;
   line-height: $topHeight;
   .header-left {
-    font-size: 24px;
+    font-size: $systemTitleFontSize;
     font-weight: 600;
     margin-bottom: 0px;
     cursor: pointer;
     i {
-      margin-left: 10px;
+      margin-left: $size10;
     }
   }
   .header-right {

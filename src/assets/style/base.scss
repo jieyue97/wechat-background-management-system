@@ -1,4 +1,9 @@
-
+// 系统滚动条
+@import "./scrollbar.scss";
+// 通用样式
+@import "./common.scss";
+// 系统字体
+@import "./font.scss";
 html,body{
     height: 100%;
     width: 100%;

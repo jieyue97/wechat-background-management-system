@@ -8,10 +8,11 @@ export default {
   data() {
     return {
       nowTime: getDate(),
+      timeId: null,
     };
   },
   created() {
-    setInterval(() => {
+    this.timeId = setInterval(() => {
       this.changeTime();
     }, 1000);
   },
@@ -19,6 +20,9 @@ export default {
     changeTime() {
       this.nowTime = getDate();
     },
+  },
+  beforeDestroy() {
+    clearInterval(this.timeId);
   },
 };
 </script>
@@ -28,7 +32,7 @@ export default {
   width: 280px;
   text-align: left;
   font-family: Number;
-  font-size: 24px;
+  font-size: $systemTitleFontSize;
   font-weight: 800;
 }
 </style>>

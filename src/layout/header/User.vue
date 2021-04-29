@@ -48,9 +48,14 @@ export default {
       this.$router.push("/user-info");
     },
     userLogout() {
-      this.$store.dispatch("LOGOUT").then((res) => {
-        console.log(res, "退出成功！");
-        this.$router.push("/login");
+      this.$confirm("是否退出登录？", {
+        cancelButtonText: "取消",
+        confirmButtonText: "确定",
+      }).then(() => {
+        this.$store.dispatch("LOGOUT").then((res) => {
+          console.log(res, "退出成功！");
+          this.$router.push("/login");
+        });
       });
     },
   },
@@ -63,7 +68,7 @@ export default {
   display: flex;
   align-items: center;
   .user-avatar {
-    margin-right: 10px;
+    margin-right: $size10;
     border: 1px solid $systemActiveBackgroundColor;
     height: 36px;
     width: 36px;

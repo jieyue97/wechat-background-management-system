@@ -99,24 +99,14 @@
 }
 
 .el-button{
-    &--primary,&--primary:focus{
-        background: rgba(0, 249, 255, 0.2);
-        border: 1px solid rgba(0, 249, 255, 0.6);
-        color: $systemActiveFontColor;
-        &:hover,&:active{
-            border: 1px solid rgba(0, 249, 255, 0.8);
-            background: rgba(0, 249, 255, 0.2);
-            color: $systemActiveFontColor;
-            transition: all 0.2s;
-        }
-    }
+    
         &--default,&.is-plain,&--default:focus{
-            background: rgba(0, 249, 255, 0.2);
+            background: $systemActiveBackgroundColor;
             border: 1px solid $systemBorderColor;
             color: $systemFontColor;
             &:hover,&:active{
                 border: 1px solid $systemHoverBorderColor;
-                background: rgba(0, 249, 255, 0.2);
+                background: $systemActiveBackgroundColor;
                 color: #fff;
                 transition: all 0.2s;
             }
@@ -125,6 +115,17 @@
         color: $systemActiveFontColor;
         &:hover,&:active{
             color: $systemActiveFontColor;
+        }
+    }
+    &--primary,&--primary:focus{
+        background: $systemActiveBackgroundColor;
+        border: 1px solid $systemActiveBackgroundColor6;
+        color: $systemActiveFontColor;
+        &:hover,&:active{
+            border: 1px solid $systemActiveBackgroundColor8;
+            background: $systemActiveBackgroundColor;
+            color: $systemActiveFontColor;
+            transition: all 0.2s;
         }
     }
     &.is-disabled.is-plain,&.is-disabled{
@@ -268,4 +269,18 @@
         border-color: $systemActiveBackgroundColor;
     }
     
+}
+.el-message-box{
+    border: 1px solid $systemActiveBackgroundColor;
+    box-shadow:  $systemBorderShadow;
+    background-color: rgb(37, 75, 75);
+    .el-message-box__message{
+        color: $systemFontColor;
+    }
+    .el-message-box__headerbtn .el-message-box__close{
+        color: $systemFontColor;
+        &:hover{
+            color: $systemActiveFontColor;
+        }
+    }
 }

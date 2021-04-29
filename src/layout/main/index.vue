@@ -31,7 +31,7 @@ export default {
 <style lang='scss' scoped>
 .layout-main {
   height: 100%;
-  padding: 10px;
+  padding: $size10;
   box-sizing: border-box;
   .content-box{
     height: calc(100% - 52px);

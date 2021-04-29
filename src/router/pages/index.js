@@ -1,5 +1,6 @@
 // 转换页面
 import Init from "@/views/main/init";
+import UserInfo from "@/views/user-info";
 const pageRoutes = [
     {
         path: "/",
@@ -13,6 +14,10 @@ const pageRoutes = [
     {
         path: "/login",
         component: () => import("@/views/login")
+    },
+    {
+        path: "/user-info",
+        component: UserInfo
     },
     {
         path: '/404',

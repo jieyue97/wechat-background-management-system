@@ -22,9 +22,7 @@
 
 <script>
 export default {
-  name: "component-name",
-  props: {},
-  computed: {},
+  name: "Breadcrumb",
   data() {
     return {
       currentRoutePathNameList: [],
@@ -54,7 +52,7 @@ export default {
       });
       return res;
     },
-    findItem(data, val, isChild = false) {
+    findItem(data, val) {
       let resData = data.filter((item) => {
         if (val == item.path) {
           return true;
@@ -66,14 +64,13 @@ export default {
       return resData;
     },
   },
-  created() {},
 };
 </script>
 
 <style lang='scss' scoped>
 .breadcrumb-container {
-  margin-bottom: 10px;
-  padding: 0 10px;
+  margin-bottom: $size10;
+  padding: 0 $size10;
   box-shadow: $systemBorderShadow;
   border-bottom: 1px solid $systemActiveBackgroundColor;
   display: flex;
@@ -85,12 +82,12 @@ export default {
     align-items: center;
     height: 100%;
     .breadcrumb__item {
-      font-size: 16px;
+      font-size: $systemFontSize16;
       white-space: nowrap;
       &::after {
         content: "/";
-        margin: 0 10px;
-        font-size: 12px;
+        margin: 0 $size10;
+        font-size: $systemFontSize12;
         color: $systemFontColor1;
       }
       &:nth-last-child(1) {
