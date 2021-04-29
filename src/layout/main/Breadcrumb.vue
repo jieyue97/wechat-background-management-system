@@ -32,8 +32,9 @@ export default {
   watch: {
     $route: {
       handler(val) {
-        let itemData = this.findItem(this.$store.getters.routes, val.path);
-        this.currentRoutePathNameList = this.getNameList(itemData);
+        let pathList = [];
+        this.findItem(this.$store.getters.routes, val.path, pathList);
+        this.currentRoutePathNameList = pathList.reverse().filter(item => !item.isUserCreate).map(item => item.name);
       },
       immediate: true,
     },
@@ -41,26 +42,18 @@ export default {
   methods: {
     // 搜索
     searchHandle() {},
-    getNameList(data, res = []) {
-      data.forEach((item) => {
-        if (!item.isUserCreate) {
-          res.push(item.name);
-        }
-        if (item.children && item.children.length) {
-          this.getNameList(item.children, res);
-        }
-      });
-      return res;
-    },
-    findItem(data, val) {
+    findItem(data, val, pathList) {
       let resData = data.filter((item) => {
         if (val == item.path) {
           return true;
         }
         if (item.children && item.children.length) {
-          return this.findItem(item.children, val, true).length ? true : false;
+          return this.findItem(item.children, val, pathList).length ? true : false;
         }
       });
+      if (resData.length) {
+        pathList.push(resData[0])
+      }
       return resData;
     },
   },

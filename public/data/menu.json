@@ -3,60 +3,73 @@
     "data": [
         {
             "title": "系统管理",
-            "value": "/home",
+            "value": "/system-manage",
             "icon": "el-icon-setting",
             "children": [
                 {
+                    "title": "角色管理",
                     "icon": "el-icon-setting",
-                    "title": "菜单一",
-                    "value": "/home/home11",
+                    "value": "/system-manage/role-manage",
+                    "children": [
+                        
+                    ]
+                },
+                {
+                    "title": "用户管理",
+                    "icon": "el-icon-setting",
+                    "value": "/system-manage/user-manage",
                     "children": [
                         {
-                            "title": "操作日志",
+                            "title": "用户列表",
                             "icon": "el-icon-setting",
-                            "value": "/home/home11/user",
+                            "value": "/system-manage/user-manage/user-list",
+                            "children": []
+                        },
+                        {
+                            "title": "收藏列表",
+                            "icon": "el-icon-setting",
+                            "value": "/system-manage/user-manage/collect-list",
                             "children": []
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "title": "用户管理",
-            "icon": "el-icon-user-solid",
-            "value": "/home2",
-            "children": [
+                },
                 {
-                    "title": "用户列表",
-                    "icon": "el-icon-user",
-                    "value": "/home12",
+                    "title": "菜单管理",
+                    "icon": "el-icon-setting",
+                    "value": "/system-manage/menu-manage",
                     "children": []
                 },
                 {
-                    "title": "收藏列表",
-                    "icon": "el-icon-star-off",
-                    "value": "/home121",
+                    "title": "主题管理",
+                    "icon": "el-icon-setting",
+                    "value": "/system-manage/theme-manage",
                     "children": []
                 }
             ]
         },
         {
-            "title": "菜单三",
-            "icon": "el-icon-setting",
-            "value": "/home3",
+            "title": "系统监控",
+            "icon": "el-icon-user-solid",
+            "value": "/system-monitor",
             "children": [
                 {
-                    "title": "菜单一",
-                    "icon": "el-icon-setting",
-                    "value": "/home14",
+                    "title": "操作日志",
+                    "icon": "el-icon-user",
+                    "value": "/system-monitor/action-log",
+                    "children": []
+                },
+                {
+                    "title": "错误日志",
+                    "icon": "el-icon-user",
+                    "value": "/system-monitor/error-log",
                     "children": []
                 }
             ]
         },
         {
-            "title": "统计",
+            "title": "系统统计",
             "icon": "el-icon-s-data",
-            "value": "/home4",
+            "value": "/system-statistic",
             "children": []
         }
     ]

@@ -107,6 +107,7 @@
 </template>
 <script>
 export default {
+  name: "ActionLog",
   // components: { ShowLogDialog, ElInputTree },
   data() {
     return {
