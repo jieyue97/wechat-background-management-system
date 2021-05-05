@@ -30,9 +30,11 @@ $systemBoxBackgroundColor:#012522;
 // 系统盒子边框内阴影
 $systemBorderShadow:0px 0px 5px $systemActiveBackgroundColor inset;
 // 系统输入框背景颜色
-$systemInputBackgroundColor: rgba(0,249,255,0.1);
+$systemInputBackgroundColor: rgba(0,249,255,0.05);
 // 系统禁用背景颜色
 $systemDisableBackgroundColor: rgba(0,249,255,0.15);
+// 系统弹框mask背景
+$systemMaskBackgroundColor: rgba(0,0,0, 0.6);
 
 // 系统内外边距
 $size10: 10px;

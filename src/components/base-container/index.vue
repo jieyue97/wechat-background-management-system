@@ -1,38 +1,53 @@
 <template>
   <div class="base-container full-box">
-    <slot name="header"></slot>
-    <div class="content-box">
+    <div class="header-box" ref="headerBox">
+      <slot name="header"></slot>
+    </div>
+    <div class="content-container" ref="contentBox">
       <div class="border-left"></div>
       <div class="border-right"></div>
-      <img
-        class="border-background"
-        src="@/assets/image/background/border-background.png"
-        alt=""
-      />
-      <slot></slot>
+      <img class="border-background" src="@/assets/image/background/border-background.png" alt />
+      <el-scrollbar style="height:100%">
+        <div class="content-box full-box">
+          <slot></slot>
+        </div>
+      </el-scrollbar>
     </div>
   </div>
 </template>
 
 <script>
+import {debounce} from "@/utils/tools"
 export default {
   name: "component-name",
   props: {},
-  computed: {},
-  data() {
-    return {};
+  methods: {
+    setHeight() {
+        this.$refs.contentBox.style.height = this.$el.offsetHeight - this.$refs.headerBox.offsetHeight - 10 + 'px';
+    }
   },
-  methods: {},
   created() {},
+  mounted() {
+    this.setHeight();
+    window.onresize = debounce(this.setHeight, 400);
+  }
 };
 </script>
 
 <style lang='scss' scoped>
 .base-container {
-  .content-box {
-    box-sizing: border-box;
-    padding: 20px;
+  .header-box {
+    margin-bottom: $size10;
+  }
+  .content-container {
+    width: 100%;
     position: relative;
+    .content-box {
+      box-sizing: border-box;
+      padding: $size20;
+      width: 100%;
+    }
+
     .border-background {
       position: absolute;
       left: 0;
@@ -68,18 +83,19 @@ export default {
         rgba(0, 249, 255, 0) 100%
       );
     }
-    .border-left{
-        left: 0;
+    .border-left {
+      left: 0;
     }
-    .border-right{
-        right: 0;
+    .border-right {
+      right: 0;
     }
-    .border-left,.border-right{
-        position: absolute;
-        width: 2px;
-        top: 0;
-        bottom: 0;
-        background: linear-gradient(
+    .border-left,
+    .border-right {
+      position: absolute;
+      width: 2px;
+      top: 0;
+      bottom: 0;
+      background: linear-gradient(
         270deg,
         rgba(0, 249, 255, 0) 0%,
         rgba(0, 249, 255, 0.2) 51%,

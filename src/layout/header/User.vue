@@ -48,10 +48,7 @@ export default {
       this.$router.push("/user-info");
     },
     userLogout() {
-      this.$confirm("是否退出登录？", {
-        cancelButtonText: "取消",
-        confirmButtonText: "确定",
-      }).then(() => {
+      this.$confirm("是否退出登录？").then(() => {
         this.$store.dispatch("LOGOUT").then((res) => {
           console.log(res, "退出成功！");
           this.$router.push("/login");

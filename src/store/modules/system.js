@@ -8,7 +8,10 @@ const SYSTEM = {
         routes: []// 保存动态路由
     },
     mutations: {
-        SET_COLLAPSE(state) {
+        SET_COLLAPSE(state, isCollapse) {
+            if ([true,false].includes(isCollapse)) {
+                state.isCollapse = isCollapse;
+            }
             state.isCollapse = !state.isCollapse;
         },
         SET_ROUTES(state, routes) {

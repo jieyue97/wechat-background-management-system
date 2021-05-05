@@ -1,108 +1,42 @@
 <template>
   <BaseContainer>
-    <div class="action-log-head" slot="header">
-      <el-form ref="form" :inline="true" :model="queryFormData">
-        <el-form-item label="用户名称">
-          <el-input
-            v-model="queryFormData.userName"
-            placeholder="用户名称"
-            v-bind="formParams"
-            @keyup.native.enter="searchTable"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="操作内容">
-          <el-input
-            v-model="queryFormData.name"
-            placeholder="操作内容"
-            v-bind="formParams"
-            @keyup.native.enter="searchTable"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="操作时间">
-          <el-date-picker
-            value-format="yyyy-MM-dd HH:mm:ss"
-            v-bind="formParams"
-            @change="dateChangeHandle"
-            v-model="queryFormData.date"
-            type="datetimerange"
-            range-separator="至"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
-          >
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="IP地址">
-          <el-input
-            v-model="queryFormData.ip"
-            placeholder="IP地址"
-            v-bind="formParams"
-            @keyup.native.enter="searchTable"
-          ></el-input>
-        </el-form-item>
-
-        <el-form-item>
-          <el-button
-            size="medium"
-            type="primary"
-            icon="gd-icon-yingyong icoyysousuo"
-            @click="searchHandle"
-            >搜索</el-button
-          >
-        </el-form-item>
-        <el-form-item>
-          <el-button
-            size="medium"
-            icon="gd-icon-yingyong icoyytongbu"
-            @click="resetForm"
-            >重置</el-button
-          >
-        </el-form-item>
-      </el-form>
-    </div>
-    <div class="action-log-body">
-      <el-table ref="table" :data="tableData" stripe height="300px">
-        <el-table-column
-          type="index"
-          label="序号"
-          width="70"
-          align="center"
-          :index="indexMethod"
-        >
-        </el-table-column>
-        <el-table-column
-          v-for="item in tableColumns"
-          :key="item.prop"
-          v-bind="item"
-          ><template slot-scope="{ row }">
-            <span v-if="item.prop == 'reponseTime'">{{
-              row[item.prop] ? row[item.prop].toFixed(3) : row[item.prop]
-            }}</span>
-            <span v-else>{{ row[item.prop] }}</span>
-          </template></el-table-column
-        >
-        <!-- fixed="right"  -->
-        <el-table-column fixed="right" label="操作" width="120" align="center">
-          <template slot-scope="{ row }">
-            <el-button type="text" size="mini" @click="clickDetail(row)">
-              <i class="gd-icon-yingyong icoyychakan"></i> 查看
-            </el-button>
-          </template>
-        </el-table-column>
-      </el-table>
-    </div>
-    <div class="action-log-foot">
-      <el-pagination
-        background
-        :current-page.sync="page.currentPage"
-        :page-sizes="[10, 20, 30, 50]"
-        :page-size.sync="page.pageSize"
-        :total="page.total"
-        :layout="'total, sizes, prev, pager, next, jumper'"
-        @size-change="handleSizeChangeFile"
-        @current-change="handleCurrentChangeFile"
-      >
-      </el-pagination>
-    </div>
+    <el-form ref="form" :inline="true" slot="header" :model="queryFormData">
+      <el-form-item label="用户名称">
+        <el-input
+          v-model.trim="queryFormData.userName"
+          placeholder="用户名称"
+          @keyup.native.enter="searchTable"
+        ></el-input>
+      </el-form-item>
+      <el-form-item label="操作内容">
+        <el-input v-model.trim="queryFormData.name" placeholder="操作内容" @keyup.native.enter="searchTable"></el-input>
+      </el-form-item>
+      <el-form-item label="操作时间">
+        <el-date-picker
+          value-format="yyyy-MM-dd HH:mm:ss"
+          @change="dateChangeHandle"
+          v-model="queryFormData.date"
+          type="datetimerange"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+        ></el-date-picker>
+      </el-form-item>
+      <el-form-item>
+        <SearchBtn @search="searchHandle" @reset="resetForm"></SearchBtn>
+      </el-form-item>
+    </el-form>
+    <BaseTable :data="tableData">
+      <el-table-column type="index" label="序号" width="70" align="center" :index="indexMethod"></el-table-column>
+      <el-table-column v-for="item in tableColumns" :key="item.prop" v-bind="item"></el-table-column>
+      <el-table-column fixed="right" label="操作" width="120" align="center">
+        <template slot-scope="{ row }">
+          <el-button type="text" size="mini" @click="clickDetail(row)">
+            <i class="el-icon-document"></i> 查看
+          </el-button>
+        </template>
+      </el-table-column>
+    </BaseTable>
   </BaseContainer>
 </template>
 <script>
@@ -111,18 +45,17 @@ export default {
   // components: { ShowLogDialog, ElInputTree },
   data() {
     return {
-      tenantData: [],
       page: {
         pageSize: 10,
         currentPage: 1,
-        total: 0,
+        total: 0
       },
       queryFormData: {
         ip: "",
         name: "",
         tenantId: "",
         userName: "",
-        date: "",
+        date: ""
       },
       tableData: [
         {
@@ -145,7 +78,7 @@ export default {
           ip: "127.0.0.1",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1387227248770596866",
@@ -167,7 +100,7 @@ export default {
           ip: "127.0.0.1",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1387227202914271233",
@@ -189,7 +122,7 @@ export default {
           ip: "127.0.0.1",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1387227106675965953",
@@ -211,7 +144,7 @@ export default {
           ip: "127.0.0.1",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1387013617088905218",
@@ -233,7 +166,7 @@ export default {
           ip: "10.1.6.67",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1386997697301889025",
@@ -255,7 +188,7 @@ export default {
           ip: "10.1.6.67",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1386997089312358402",
@@ -277,7 +210,7 @@ export default {
           ip: "10.1.6.67",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1386996806280724481",
@@ -299,7 +232,7 @@ export default {
           ip: "10.1.6.67",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1386984071987904513",
@@ -321,7 +254,7 @@ export default {
           ip: "10.1.6.67",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1386949498751074306",
@@ -343,7 +276,7 @@ export default {
           ip: "10.1.5.25",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1386948591657336834",
@@ -365,7 +298,7 @@ export default {
           ip: "10.1.5.25",
           paras: '{"ids":"1386930754440052737"}',
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1386947939258515457",
@@ -387,7 +320,7 @@ export default {
           ip: "10.1.5.25",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1386946701053837313",
@@ -409,7 +342,7 @@ export default {
           ip: "10.1.5.25",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1386938017162641410",
@@ -431,7 +364,7 @@ export default {
           ip: "10.1.6.67",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1386935381021605890",
@@ -453,7 +386,7 @@ export default {
           ip: "10.1.6.67",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1386935371613782018",
@@ -475,7 +408,7 @@ export default {
           ip: "10.1.6.67",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1386934940724543490",
@@ -497,7 +430,7 @@ export default {
           ip: "127.0.0.1",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1386934863398354945",
@@ -519,7 +452,7 @@ export default {
           ip: "127.0.0.1",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1386933933823148033",
@@ -541,7 +474,7 @@ export default {
           ip: "10.1.6.27",
           paras: "{}",
           startTime: "",
-          endTime: "",
+          endTime: ""
         },
         {
           id: "1386933726804885505",
@@ -563,67 +496,63 @@ export default {
           ip: "10.1.6.27",
           paras: "{}",
           startTime: "",
-          endTime: "",
-        },
+          endTime: ""
+        }
       ],
-      total: 888,
-      size: 20,
-      current: 1,
-      orders: [{ column: "create_time", asc: false }],
       tableColumns: [
         {
           label: "用户姓名",
           prop: "userName",
-          width: "120",
+          width: "120"
         },
         {
           label: "用户机构",
           prop: "deptName",
-          width: "150",
+          width: "150"
         },
         {
           label: "用户单位",
           prop: "tenantName",
-          width: "150",
+          width: "150"
         },
         {
           label: "操作内容",
           prop: "name",
-          minWidth: "200",
+          minWidth: "200"
         },
 
         {
           label: "IP地址",
           prop: "ip",
-          width: "150",
+          width: "150"
         },
         {
           label: "操作时间",
           prop: "createTime",
-          width: "170",
+          width: "170"
         },
         {
           label: "接口地址",
           prop: "url",
-          width: "300",
+          width: "300"
         },
 
         {
           label: "响应时间(秒)",
           prop: "reponseTime",
-          width: "120",
+          width: "120"
         },
         {
           label: "请求参数",
           prop: "paras",
-          width: "300",
-        },
-      ],
+          width: "300"
+        }
+      ]
     };
   },
   computed: {
     rowData() {
-      return this.tableColumns.map((item) => {
+      return this.tableColumns.map(item => {
         item.value = this.showRowData[item.prop];
         return item;
       });
@@ -631,14 +560,14 @@ export default {
     formParams() {
       return {
         size: "medium",
-        clearable: true,
+        clearable: true
       };
     },
     formEvent() {
       return {
-        change: this.searchTable,
+        change: this.searchTable
       };
-    },
+    }
   },
   created() {},
   mounted() {},
@@ -654,7 +583,7 @@ export default {
         name: "",
         tenantId: "",
         userName: "",
-        date: "",
+        date: ""
       };
       this.searchHandle();
     },
@@ -682,10 +611,10 @@ export default {
       let obj = {
         current: this.page.currentPage,
         size: this.page.pageSize,
-        ...this.queryFormData,
+        ...this.queryFormData
       };
       delete obj.date;
-      getOperateLogList(obj).then((res) => {
+      getOperateLogList(obj).then(res => {
         this.tabledata = res.data.data.records;
         this.page.total = res.data.data.total;
         this.page.pageSize = res.data.data.size;
@@ -714,8 +643,8 @@ export default {
       // });
       this.showRowData = { ...row };
       this.showLogDialog = true;
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

@@ -9,7 +9,8 @@
   ::-webkit-scrollbar-corner{
     background: transparent;
   }
-  ::-webkit-scrollbar-thumb {
+  ::-webkit-scrollbar-thumb,.el-scrollbar__thumb {
     border-radius: 5px;
     background-color: $systemActiveBackgroundColor;
   }
+  
